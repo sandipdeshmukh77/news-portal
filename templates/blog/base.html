@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+{% load blog_tags %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- google fonts link -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Texturina:wght@900&display=swap" rel="stylesheet">
+    <!-- css link -->
+    <link rel="stylesheet" href="{% static "css/blog.css" %}">
+    <!-- Javascript cdn -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script> -->
+
+  </head>
+  <body>
+    <div class="content">
+      {% block body %}{% endblock %}
+    </div>
+
+    <div class="sidebar">
+      <h2>Demo Blog</h2>
+      <p>The total number of post published upto today: <span  id='pcount'>0 {%total_posts%}</span> </p>
+      <h3>Latest Post</h3>{%show_latest_post 4 %}
+      <h3>Most Commented Posts</h3>
+      {%get_most_commented_posts 6 as most_commented_post %}
+      {%for post in most_commented_post%}
+      <li><a href="{{post.get_absolute_url}}">{{post.title}}</a></li>
+      {%endfor%}
+
+    </div>
+
+  </body>
+</html>

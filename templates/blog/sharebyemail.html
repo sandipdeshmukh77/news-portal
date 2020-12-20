@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+{% block title %} share post by mail {% endblock %}
+
+{% block body %}
+{%if send%}
+<h1>Email send successfully</h1>
+{%else%}
+  <h1>Share "{{post.title|upper}}" By Mail</h1>
+  <!-- <form method="post">
+    {{form.as_p}}
+    {% csrf_token %}
+    <input type="submit"  class='btn btn-primary btn-lg' name="submit" value="Send Post">
+  </form> -->
+
+
+  <form method="POST" class="post-form" action="">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label"></label>
+    <div class="col-sm-6 ">
+    <h3> <span id='form_heading' >Enter Details</span> </h3>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label">Name:</label>
+    <div class="col-sm-5">
+
+      <input type="text" name="name" class="form-control">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-1 col-form-label">Email:</label>
+    <div class="col-sm-5">
+
+      <input type="email" name="email" class="form-control">
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label">To:</label>
+    <div class="col-sm-5">
+
+      <input type="email" name="to" class="form-control">
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label" for="inputEmail3" >Comment:</label>
+    <div class="col-sm-5">
+
+      <textarea id="inputEmail3" name="comment" rows="4" cols="50" class="form-control" ></textarea>
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label"></label>
+    <div  class="col-sm-4">
+    <button type="submit" class="btn btn-primary btn-lg"> <span id ='submit_button'>Submit</span> </button>
+    </div>
+  </div>
+    </div>
+</form>
+
+  {%endif%}
+  {% endblock %}

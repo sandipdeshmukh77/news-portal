@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+{% block title %}
+  {{post.title}}
+{% endblock %}
+
+{% block body %}
+  <h1>{{post.title}}</h1>
+  <p id="date">Published on {{post.publish}} by {{post.author|title}} </p>
+  {{post.body|linebreaks}}
+  <a href="/{{post.id}}/share" class="btn btn-success btn-lg">Share Post By Mail</a><br><br>
+
+  {% with comments.count as comment_count %}
+  <h2>{{comments.count}} comment{{comment_count|pluralize}}</h2><hr>
+    {%endwith%}
+  {%if comments%}
+ {% for comment in comments %}
+ <div id='ch'>
+   <p>comment {{forloop.counter}} by {{comment.name}} on {{comment.created}}</p>
+ </div>
+ <div class="cb">
+  {{comment.body|linebreaks}}
+</div><hr>
+{%endfor%}
+{%else%}
+<h2>There is no comments yet!!!</h2>
+{%endif%}
+{%if csubmit%}
+<h2>your comment added successfully</h2>
+{%else%}
+<form method="POST" class="post-form" action="">
+{%csrf_token%}
+<div class="form-group row">
+  <label class="col-sm-1 col-form-label">Name:</label>
+  <div class="col-sm-5">
+    <input type="text" name="name" class="form-control">
+  </div>
+</div>
+
+
+<div class="form-group row">
+  <label class="col-sm-1 col-form-label">Email:</label>
+  <div class="col-sm-5">
+    <input type="email" name="email" class="form-control">
+  </div>
+</div>
+
+<div class="form-group row">
+  <label class="col-sm-1 col-form-label" for="inputEmail3" >Body:</label>
+  <div class="col-sm-5">
+    <textarea id="inputEmail3" name="body" rows="4" cols="50" class="form-control" ></textarea>
+  </div>
+</div>
+
+  <div>
+    <label class="col-sm-2 col-form-label"></label>
+    <input type="submit" name="" value="submit comment" class="btn btn-success btn-lg">
+
+  </div>
+</form>
+{%endif%}
+{% endblock %}

@@ -1,0 +1,67 @@
+.content{
+  width:68%;
+  float: left;
+  padding:0 0 0 30px;
+}
+.sidebar{
+  width:30%;
+  float:right;
+  padding:10px;
+  background:#FFB899;
+  border-radius: 10px;
+
+}
+body{
+  background:#72DBDB;
+  color:black;
+
+}
+
+#date{
+  color:yellow;
+  font-style:italic;
+  font-size:12px;
+}
+
+h1{
+  text-align:center;
+  border-bottom: 2px solid grey;
+  font-weight:bold;
+  color:black;
+  padding:0 0 10px 0;
+  font-family: 'Texturina', serif;
+}
+h2{
+  color:black;
+}
+label{
+  font-size: 20px;
+}
+#ch{
+  color:yellow;
+  font-style:italic;
+  font-size:15px;
+}
+#submit_button{
+  font-size: 20px;
+}
+#form_heading{
+  font-size: 40px;
+  font-weight: bold;
+  font-family: Calibri;
+}
+#tag_name{
+  color:white;
+  background-color:gray;
+  font-size: 2rem;
+  border:2px solid yellow;
+  border-radius: 50%;
+}
+#pcount{
+  font-size:40px;
+  color: blue;
+  border: 2px solid inherit;
+  border-radius: 20px;
+  background-color:#b5acac;
+  padding:10px;
+}
